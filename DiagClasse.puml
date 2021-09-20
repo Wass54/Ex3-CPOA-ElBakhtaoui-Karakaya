@@ -1,0 +1,63 @@
+@startuml
+
+'''classes 
+
+class Identite{
+
+    - nip : String;
+    - nom : String;
+    - prenom : String;
+
+    + getNip() : String;
+    + getNom() : String;
+    + getPrenom() : String;
+
+}
+
+class Etudiant{
+
+    - id : Identite;
+    - form : Formation;
+    - List<Notes> : Notes;
+
+    + ajouterNote(Matiere m);
+    + calculMoyenne(Matiere m) : int;
+    + calculMoyenneG() : int;
+
+
+}
+
+class Formation{
+
+    
+
+    + ajouterMatiere(Matiere m);
+    + supprimerMatiere(Matiere m);
+
+}
+
+class Groupe{
+
+    + ajouterEtudiant(Etudiant e);
+    + supprimerEtudiant(Etudiant e);
+    + calculMoyenne(Matiere m) : int;
+    + calculMoyenneG() : int;
+    + triParMerite();
+    + triAlpha();
+
+}
+
+class Matiere{
+
+    - nom : String;
+
+    + getNom : String;
+
+}
+
+class Notes{
+
+
+}
+
+@enduml
