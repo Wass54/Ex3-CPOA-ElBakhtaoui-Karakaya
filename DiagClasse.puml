@@ -20,8 +20,6 @@ class Identite{
 
 class Etudiant{
 
-    - id : Identite;
-    - form : Formation;
     - notes: Map<String,ArrayList<Float>;
 
     + Etudiant(Identite, Formation);
@@ -49,9 +47,6 @@ class Formation{
 }
 
 class Groupe{
-
-    - form : Formation;
-    - etudiant : List<Etudiant>;
 
     + Groupe(Formation, List<Etudiant>);
     + ajouterEtudiant(Etudiant) : void;
