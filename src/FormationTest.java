@@ -17,17 +17,16 @@ public class FormationTest {
         mapMatiere.put("Expression Communication", 2);
         mapMatiere.put("Python", 5);
         info = new Formation("S3C", mapMatiere);
-        etu1 = new Etudiant(new Identite("I1", "Neymar","Jean"), info);    
+        etu1 = new Etudiant(new Identite("AA", "El-Baktahoui","Wassim"), info);    
     }
     
     
     @Test 
-    public void testAjouterNote_OK() {
-        etu1.ajouterNote("Web", 12);
-        Map<String, ArrayList<Float>> notes = etu1.getNotes();
-        ArrayList<Float> note = notes.get("Web");
-        float n = note.get(note.size()-1);
-        assertEquals("La derniere note devrai être 12", 12,n);
+    public void ajouterMatiere_normal() {
+        info.ajouterMatiere("Java", 6);
+        String jaa;
+
+        assertEquals("Ajouter matiere", "Java",jaa);
     }
     
     
