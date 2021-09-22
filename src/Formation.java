@@ -1,7 +1,7 @@
 public class Formation{
 
     /**
-     * String id correspond à l'id de l'étudiant
+     * String id correspond à l'id de la matiere
      * Map<String,Integer> est un hashcode matiere avec son coefficient
      * 
      */
@@ -10,7 +10,7 @@ public class Formation{
 
 
     /**
-     * @param a nom de l'étudiant
+     * @param a nom de la matiere
      * @param b hahscode matiere
      * 
      */
@@ -21,7 +21,7 @@ public class Formation{
 
 
     /**
-     * @return id de l'étudiant
+     * @return id de la matiere
      */
     public String getId(){
         return this.id;
@@ -54,7 +54,7 @@ public class Formation{
 
 
     /**
-     * @param a le nom de l'étudiant
+     * @param a le nom de la matiere
      * @return int le noef de la matiere
      * on accède la valeur ( coefficient) de la matiere donne en parametre
      */
