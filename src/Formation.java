@@ -3,13 +3,12 @@ public class Formation{
     private Map<String,integer> matiere;
 
     public Formation(String a, Map<String,integer> b){
-
         this.id = a;
         this.matiere = b;
     }
 
     public String getId(){
-
+        return this.id;
     }
 
     public void ajouterMatiere(String a){
