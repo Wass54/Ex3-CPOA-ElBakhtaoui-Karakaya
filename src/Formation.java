@@ -12,8 +12,7 @@ public class Formation{
     }
 
     public void ajouterMatiere(String a){
-        HashMap<String, Integer> hashmap = new HashMap<String, Integer>();
-        hashmap.put("Ma clé", "Ma valeur");
+        matiere.put("Ma clé", "Ma valeur");
     }
 
     public void supprimerMatiere(String a){
@@ -21,7 +20,43 @@ public class Formation{
 
     }
 
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Formation)) {
+            return false;
+        }
+        Formation formation = (Formation) o;
+        return Objects.equals(id, formation.id) && Objects.equals(matiere, formation.matiere);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, matiere);
+    }
+
+
+
+
+
     public int coefMatiere(String a){
 
     }
-}
+
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Map<String,Integer> getMatiere() {
+        return this.matiere;
+    }
+
+    public void setMatiere(Map<String,Integer> matiere) {
+        this.matiere = matiere;
+    }
+
+}    
