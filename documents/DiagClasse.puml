@@ -20,7 +20,7 @@ class Identite{
 
 class Etudiant{
 
-    - notes: Map<String,ArrayList<Float>;
+    - notes: Map<String,ArrayList<Float>>;
 
     + Etudiant(Identite, Formation);
     + ajouterNote(String, float);
@@ -28,6 +28,7 @@ class Etudiant{
     + calculMoyenneG() : float;
     + getIdentite() : Identite;
     + getFormation() : Formation;
+    + getNotes() : Map<String,ArrayList<Float>>;
     + toString() : String;
 
 

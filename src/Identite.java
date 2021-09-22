@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
  * Classe qui permet de définir l'identité d'un étudiant
  */
