@@ -1,4 +1,10 @@
 public class Formation{
+
+    /**
+     * String id correspond à l'id de l'étudiant
+     * Map<String,Integer> 
+     * 
+     */
     private String id;
     private Map<String,Integer> matiere;
 
@@ -11,39 +17,27 @@ public class Formation{
         return this.id;
     }
 
-    public void ajouterMatiere(String a){
-        matiere.put("Ma clé", "Ma valeur");
+    public void ajouterMatiere(String a, int b){
+        if(this.containsKey(a)){
+        matiere.put(a, b);
+        }
     }
 
     public void supprimerMatiere(String a){
-
-
-    }
-
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Formation)) {
-            return false;
+        if(this.containsKey(a)){
+            this.remove(a);
         }
-        Formation formation = (Formation) o;
-        return Objects.equals(id, formation.id) && Objects.equals(matiere, formation.matiere);
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, matiere);
-    }
-
-
 
 
 
     public int coefMatiere(String a){
-
+        int coef = null;
+        coef = this.get(a);
+        if(!this.containsKey(a)){
+            return -1;
+        }
+        return coef;
     }
 
 
