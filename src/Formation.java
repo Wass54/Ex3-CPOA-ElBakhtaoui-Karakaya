@@ -28,6 +28,14 @@ public class Formation{
     }
 
     /**
+     * Getteur qui permet de recuperer les matières de la formation
+     * @return les matières
+     */
+    public Map<String, Integer> getMatiere(){
+        return this.matiere;
+    }
+
+    /**
      * @param a string matiere
      * @param b string coefficient
      * On ajoute une matiere

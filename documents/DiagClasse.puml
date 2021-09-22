@@ -39,8 +39,9 @@ class Formation{
     - id : String;
     - matiere : Map<String,integer>;
     
-    + Formation(String, Map<String,integer>);
+    + Formation(String, Map<String, Integer>);
     + getId() : String;
+    + getMatiere() : Map<String, Integer>;
     + ajouterMatiere(String,int) : void;
     + supprimerMatiere(String) : void;
     + coefMatiere(String) : int;
