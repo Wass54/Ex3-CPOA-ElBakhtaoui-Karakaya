@@ -52,5 +52,43 @@ public class Identite{
         return this.prenom;
     }
 
-    
+    /**
+     * Méthode toString qui permet de donner les informations de l'identité
+     * @return Les informations en forme de String
+     */
+    @Override
+    public String toString() {
+        return "{" +
+            " nip='" + getNip() + "'" +
+            ", nom='" + getNom() + "'" +
+            ", prenom='" + getPrenom() + "'" +
+            "}";
+    }
+
+    /**
+     * Méthode equals qui permet de comparer deux objets 
+     * @param o un objet
+     * @return un boolean qui permet de savoir qui c'est les mêmes ou pas
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Identite)) {
+            return false;
+        }
+        Identite identite = (Identite) o;
+        return Objects.equals(nip, identite.nip) && Objects.equals(nom, identite.nom) && Objects.equals(prenom, identite.prenom);
+    }
+
+    /**
+     * Méthode hashCode
+     * @return un entier
+     */
+    @Override   
+    public int hashCode() {
+        return Objects.hash(nip, nom, prenom);
+    }
+
+
 }
