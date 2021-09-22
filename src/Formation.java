@@ -12,7 +12,6 @@ public class Formation{
     /**
      * @param a nom de la matiere
      * @param b hahscode matiere
-     * 
      */
     public Formation(String a, Map<String,Integer> b){
         this.id = a;

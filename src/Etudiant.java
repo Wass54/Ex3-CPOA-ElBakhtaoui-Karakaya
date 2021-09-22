@@ -15,7 +15,8 @@ public class Etudiant{
      */
     private Formation formation;
     /**
-     * Attribut qui permet de savoir les notes de l'étudiant
+     * Attribut qui permet de savoir les notes de l'étudiant,
+     * le string correspond à la matière et l'array list de float correspond aux notes
      */
     private Map<String,ArrayList<Float>> notes;
 
@@ -32,16 +33,33 @@ public class Etudiant{
 
     /**
      * Méthode qui permet d'ajouter des notes
-     * @param s une chaine de caractère qui correspond à une clé
+     * @param s une chaine de caractère qui correspond à une clé (matière)
      * @param f un float qui correspond à la note
      */
     public void ajouterNote(String a, float b) throws NoteException{
-        if((b > 0 || b < 20) && (a == this.formation.getId())){
+        if((b > 0 || b < 20) && (a == this.formation.getMatiere())){
             if(this.containsKey(a)){
             notes.put(a, b);
             }
         }
         else{throw new NoteException("La note n'est pas dans l'intervalle 0 et 20 et/ou la matière n'est pas dans la formation");}
+    }
+
+    /**
+     * Méthode qui permet de calculer la moyenne de l'étudiant
+     * @param a une matière
+     * @return un float qui correspond à la moyenne d'une matière de l'étudiant
+     */
+    public float calculMoyenne(String a){
+        
+    }
+
+    /**
+     * Méthode qui permet de calculer la moyenne générale de l'étudiant
+     * @return un float qui correspond à la moyenne générale de l'étudiant
+     */
+    public float calculMoyenneG(){
+
     }
 
 
