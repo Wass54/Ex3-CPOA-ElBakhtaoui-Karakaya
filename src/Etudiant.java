@@ -35,11 +35,15 @@ public class Etudiant{
      * @param s une chaine de caractère qui correspond à une clé
      * @param f un float qui correspond à la note
      */
-    public void ajouterNote(String a, float b){
-        if(this.containsKey(a)){
-        notes.put(a, b);
+    public void ajouterNote(String a, float b) throws NoteException{
+        if((b > 0 || b < 20) && (a == this.formation.getId())){
+            if(this.containsKey(a)){
+            notes.put(a, b);
+            }
         }
+        else{throw new NoteException("La note n'est pas dans l'intervalle 0 et 20 et/ou la matière n'est pas dans la formation");}
     }
+
 
     /**
      * Getteur qui permet de récuperer l'identité de l'étudiant
