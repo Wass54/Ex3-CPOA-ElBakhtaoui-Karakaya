@@ -15,7 +15,6 @@ class Identite{
     + toString() : String;
     + hashCode() : int;
     + equals(Object) : boolean;
-    + toString() : String;
 
 }
 
