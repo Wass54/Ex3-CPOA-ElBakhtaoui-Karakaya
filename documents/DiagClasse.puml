@@ -1,0 +1,71 @@
+@startuml
+
+'''classes 
+
+class Identite{
+
+    - nip : String;
+    - nom : String;
+    - prenom : String;
+
+    + Identite(String, String, String);
+    + getNip() : String;
+    + getNom() : String;
+    + getPrenom() : String;
+    + toString() : String;
+    + hashCode() : int;
+    + equals(Object) : boolean;
+
+}
+
+class Etudiant{
+
+    - notes: Map<String,ArrayList<Float>;
+
+    + Etudiant(Identite, Formation);
+    + ajouterNote(String, float);
+    + calculMoyenne(String) : float;
+    + calculMoyenneG() : float;
+    + getIdentite() : Identite;
+    + getFormation() : Formation;
+    + toString() : String;
+
+
+}
+
+class Formation{
+
+    - id : String;
+    - matiere : Map<String,integer>;
+    
+    + Formation(String, Map<String,integer>);
+    + getId() : String;
+    + ajouterMatiere(String,int) : void;
+    + supprimerMatiere(String) : void;
+    + coefMatiere(String) : int;
+
+}
+
+class Groupe{
+
+    + Groupe(Formation, List<Etudiant>);
+    + ajouterEtudiant(Etudiant) : void;
+    + supprimerEtudiant(Etudiant) : void;
+    + calculMoyenne(String) : float;
+    + calculMoyenneG() : float;
+    + triParMerite() : void;
+    + triAlpha() : void;
+    + getFormation() : Formation;
+    + getEtudiant() : List<Etudiant>;
+}
+
+'''liaisons
+Etudiant  --> "0..1*" Identite : -identite
+Etudiant  --> "0..1" Formation : -formation
+Groupe  --> "0..*" Etudiant : -etudiant
+Groupe  --> "0..1" Formation : -formation
+
+
+
+
+@enduml
