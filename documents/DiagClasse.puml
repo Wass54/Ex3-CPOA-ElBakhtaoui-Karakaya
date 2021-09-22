@@ -15,6 +15,7 @@ class Identite{
     + toString() : String;
     + hashCode() : int;
     + equals(Object) : boolean;
+    + toString() : String;
 
 }
 
@@ -43,6 +44,7 @@ class Formation{
     + ajouterMatiere(String,int) : void;
     + supprimerMatiere(String) : void;
     + coefMatiere(String) : int;
+    + toString() : String;
 
 }
 
@@ -57,6 +59,7 @@ class Groupe{
     + triAlpha() : void;
     + getFormation() : Formation;
     + getEtudiant() : List<Etudiant>;
+    + toString() : String;
 }
 
 '''liaisons
