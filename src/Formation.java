@@ -2,7 +2,8 @@ public class Formation{
 
     /**
      * String id correspond à l'id de la matiere
-     * Map<String,Integer> est un hashcode matiere avec son coefficient
+     * Map<String,Integer> est un hashcode matiere avec son coefficient 
+     * Le string correspond au nom de la matière et l'integer au coefficient de la matière
      * 
      */
     private String id;

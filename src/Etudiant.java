@@ -32,7 +32,7 @@ public class Etudiant{
 
         Iterator iterator = this.notes.entrySet().iterator();
         while(iterator.hasNext()){
-            
+            notes.put(this.formation.getMatiere(),this.getNotes());
         }
     }
 
@@ -41,13 +41,13 @@ public class Etudiant{
      * @param a une chaine de caractère qui correspond à une clé (matière)
      * @param b un float qui correspond à la note
      */
-    public void ajouterNote(String a, float b) throws NoteException{
+    public void ajouterNote(String matiere, float note) throws NoteException{
         if(note < 0 || note > 20) throw new NoteException("La note n'est pas dans l'intervalle 0 et 20";
-        if(notes.containsKey(m)) notes.get(m).add(note);
+        if(notes.containsKey(matiere)) notes.get(matiere).add(note);
         else {
             ArrayList<Float> noteTemp = new ArrayList<>();
             noteTemp.add(note);
-            notes.put(m, noteTemp);
+            notes.put(matiere, noteTemp);
         }
     }
 
