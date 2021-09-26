@@ -29,20 +29,26 @@ public class Etudiant{
         this.identite = pIdentite;
         this.formation = pFormation;
         this.notes = new HashMap<String, ArrayList<Float>>();
+
+        Iterator iterator = this.notes.entrySet().iterator();
+        while(iterator.hasNext()){
+            
+        }
     }
 
     /**
      * Méthode qui permet d'ajouter des notes
-     * @param s une chaine de caractère qui correspond à une clé (matière)
-     * @param f un float qui correspond à la note
+     * @param a une chaine de caractère qui correspond à une clé (matière)
+     * @param b un float qui correspond à la note
      */
     public void ajouterNote(String a, float b) throws NoteException{
-        if((b > 0 || b < 20) && (a == this.formation.getMatiere())){
-            if(this.containsKey(a)){
-            notes.put(a, b);
-            }
+        if(note < 0 || note > 20) throw new NoteException("La note n'est pas dans l'intervalle 0 et 20";
+        if(notes.containsKey(m)) notes.get(m).add(note);
+        else {
+            ArrayList<Float> noteTemp = new ArrayList<>();
+            noteTemp.add(note);
+            notes.put(m, noteTemp);
         }
-        else{throw new NoteException("La note n'est pas dans l'intervalle 0 et 20 et/ou la matière n'est pas dans la formation");}
     }
 
     /**
@@ -51,7 +57,15 @@ public class Etudiant{
      * @return un float qui correspond à la moyenne d'une matière de l'étudiant
      */
     public float calculMoyenne(String a){
-        
+        float sum = 0;
+        if (notes.containsKey(m)) {
+            for (int i = 0; i < notes.get(m).size(); i++) {
+                sum += notes.get(m).get(i);
+            }
+            return sum / notes.get(m).size();
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -59,7 +73,11 @@ public class Etudiant{
      * @return un float qui correspond à la moyenne générale de l'étudiant
      */
     public float calculMoyenneG(){
-
+        float sum = 0;
+        for (String matiere : notes.keySet()){
+            sum += this.calculMoyenneMatiere(matiere);
+        }
+        return sum / notes.keySet().size();
     }
 
 
