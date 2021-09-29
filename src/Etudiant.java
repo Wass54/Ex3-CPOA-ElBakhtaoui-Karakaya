@@ -30,9 +30,8 @@ public class Etudiant{
         this.formation = pFormation;
         this.notes = new HashMap<String, ArrayList<Float>>();
 
-        Iterator iterator = this.notes.entrySet().iterator();
-        while(iterator.hasNext()){
-            notes.put(this.formation.getMatiere(),this.getNotes());
+        for(String mat : this.formation.getMatiere().keySet()){
+            this.notes.put(mat, new ArrayList<Float>());
         }
     }
 
