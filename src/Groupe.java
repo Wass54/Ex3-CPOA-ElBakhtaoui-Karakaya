@@ -25,10 +25,12 @@ public class Groupe{
 
     /**
      * méthode qui permet d'ajouter un étudiant du groupe
-     * @param Etudiant étudiant qui va être ajouté
+     * @param Etudiant étudiant qui va être ajouté dans la liste etudiants
      */
     public void ajouterEtudiant(Etudiant pEtu){
-
+        if(this.getFormation() == pEtu.getFormation()){
+                etudiants.add(pEtu);     
+        }
     }
 
     /**
@@ -36,7 +38,7 @@ public class Groupe{
      * @param Etudiant étudiant qui va être supprimé
      */
     public void supprimerEtudiant(Etudiant pEtu){
-
+        etudiants.remove(pEtu);
     }
 
     /**
@@ -56,10 +58,18 @@ public class Groupe{
 
     }
 
+    /**
+     * méthode qui permet de trier les étudiants dans la liste selon
+     * leur moyenne générale décroissante
+     */
     public void triParMerite(){
 
     }
 
+    /**
+     * méthode qui permet de trier les étudiants dans la liste selon leur 
+     * ordre alphabétique
+     */
     public void triAlpha(){
 
     }

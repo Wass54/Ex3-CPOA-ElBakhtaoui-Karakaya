@@ -57,11 +57,11 @@ public class Etudiant{
      */
     public float calculMoyenne(String a){
         float sum = 0;
-        if (notes.containsKey(m)) {
-            for (int i = 0; i < notes.get(m).size(); i++) {
-                sum += notes.get(m).get(i);
+        if (notes.containsKey(a)) {
+            for (int i = 0; i < notes.get(a).size(); i++) {
+                sum += notes.get(a).get(i);
             }
-            return sum / notes.get(m).size();
+            return sum / notes.get(a).size();
         } else {
             return 0;
         }
