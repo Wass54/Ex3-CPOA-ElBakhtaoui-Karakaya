@@ -61,6 +61,19 @@ public class Formation{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    
     /**
      * @param a le nom de la matiere
      * @return int le noef de la matiere

@@ -24,11 +24,26 @@ public class FormationTest {
     @Test 
     public void ajouterMatiere_normal() {
         info.ajouterMatiere("Java", 6);
-        String jaa;
 
-        assertEquals("Ajouter matiere", "Java",jaa);
+        assertEquals("Ajouter matiere", "Java", info.get("Java"));
     }
     
+
+    @Test 
+    public void ajouterMatiere_normal_null() {
+        info.ajouterMatiere("Java", 0);
+        int a>0;
+        assertEquals("Le coefficient ne peut pas etre à 0", a, info.get("Java"));
+    }
+
+
+
+    @Test 
+    public void ajouterMatiere_normal_negative() {
+        info.ajouterMatiere("Java", 6);
+        int a<0;
+        assertEquals("Ajouter matiere", "Java", info.get("Java"));
+    }
     
     
 }
