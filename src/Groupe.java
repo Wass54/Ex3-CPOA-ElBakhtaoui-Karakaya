@@ -1,7 +1,7 @@
+import java.util.*;
 /**
  * classe qui correspond à un groupe
  */
-
 public class Groupe{
 
     /**
@@ -29,7 +29,9 @@ public class Groupe{
      */
     public void ajouterEtudiant(Etudiant pEtu){
         if(this.getFormation() == pEtu.getFormation()){
+            if(!etudiants.contains(pEtu)){
                 etudiants.add(pEtu);     
+            }
         }
     }
 
@@ -38,7 +40,9 @@ public class Groupe{
      * @param Etudiant étudiant qui va être supprimé
      */
     public void supprimerEtudiant(Etudiant pEtu){
+        if(etudiants.contains(pEtu)){
         etudiants.remove(pEtu);
+        }
     }
 
     /**
@@ -46,8 +50,13 @@ public class Groupe{
      * @param String la chaine de caractère correspond à la matière dont on veut savoir la moyenne
      * @return une valeur de type float qui correspond à la moyenne
      */
-    public float calculMoyenne(String pMatière){
-
+    public float calculMoyenne(String pMatiere){
+        float res = 0;
+        for (int i = 0; i < etudiants.size(); i++) {
+            res += etudiants.calculMoyenne(pMatiere).get(i);
+        }
+        return res / etudiants.size();
+         
     }
 
     /**
@@ -55,7 +64,11 @@ public class Groupe{
      * @return une valeur de type float qui correspond à la moyenne générale du groupe
      */
     public float calculMoyenneG(){
-
+        float res = O;
+        for(String matiere : etudiants.getNotes().keySet()){
+            res += this.calculMoyenne(matiere);
+        }
+        return res / etudiants.getNotes().keySet().size();
     }
 
     /**
@@ -63,7 +76,8 @@ public class Groupe{
      * leur moyenne générale décroissante
      */
     public void triParMerite(){
-
+        float note = etudiants.getNotes();
+        Collections.sort(note, Collections.reverseOrder()); //trier dans l'ordre décroissant
     }
 
     /**
@@ -71,7 +85,7 @@ public class Groupe{
      * ordre alphabétique
      */
     public void triAlpha(){
-
+        Collections.sort(etudiants);
     }
 
     /**
@@ -99,7 +113,7 @@ public class Groupe{
     public String toString() {
         return "{" +
             " formation='" + getFormation() + "'" +
-            ", etudiants='" + getEtudiants() + "'" +
+            ", etudiants='" + getEtudiant() + "'" +
             "}";
     }
 
