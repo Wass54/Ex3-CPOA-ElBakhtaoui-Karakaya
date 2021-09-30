@@ -41,7 +41,7 @@ public class Etudiant{
      * @param b un float qui correspond à la note
      */
     public void ajouterNote(String matiere, float note) throws NoteException{
-        if(note < 0 || note > 20) throw new NoteException("La note n'est pas dans l'intervalle 0 et 20";
+        if(note < 0 || note > 20) throw new NoteException("La note n'est pas dans l'intervalle 0 et 20");
         if(notes.containsKey(matiere)) notes.get(matiere).add(note);
         else {
             ArrayList<Float> noteTemp = new ArrayList<>();
@@ -52,16 +52,16 @@ public class Etudiant{
 
     /**
      * Méthode qui permet de calculer la moyenne de l'étudiant
-     * @param a une matière
+     * @param String une matière
      * @return un float qui correspond à la moyenne d'une matière de l'étudiant
      */
     public float calculMoyenne(String a){
-        float sum = 0;
+        float res = 0;
         if (notes.containsKey(a)) {
             for (int i = 0; i < notes.get(a).size(); i++) {
-                sum += notes.get(a).get(i);
+                res += notes.get(a).get(i);
             }
-            return sum / notes.get(a).size();
+            return res / notes.get(a).size();
         } else {
             return 0;
         }
@@ -72,11 +72,11 @@ public class Etudiant{
      * @return un float qui correspond à la moyenne générale de l'étudiant
      */
     public float calculMoyenneG(){
-        float sum = 0;
+        float res = 0;
         for (String matiere : notes.keySet()){
-            sum += this.calculMoyenneMatiere(matiere);
+            res += this.calculMoyenne(matiere);
         }
-        return sum / notes.keySet().size();
+        return res / notes.keySet().size();
     }
 
 

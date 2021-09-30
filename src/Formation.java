@@ -1,12 +1,17 @@
+import java.util.*;
+/**
+ * classe qui correspond à une formation
+ */
 public class Formation{
 
     /**
-     * String id correspond à l'id de la matiere
-     * Map<String,Integer> est un hashcode matiere avec son coefficient 
-     * Le string correspond au nom de la matière et l'integer au coefficient de la matière
-     * 
-     */
+     * Attribut string id correspond à l'id de la matiere
+    */
     private String id;
+    /** 
+    * Map<String,Integer> est un hashcode matiere avec son coefficient 
+    * Le string correspond au nom de la matière et l'integer au coefficient de la matière
+    */
     private Map<String,Integer> matiere;
 
 
@@ -42,23 +47,24 @@ public class Formation{
      * 
      */
     public void ajouterMatiere(String a, int b){
-        if(this.containsKey(a)){
+        if(matiere.containsKey(a)){
         matiere.put(a, b);
         }
     }
 
 
-        /**
+    /**
      * @param a string matiere
      * On supprime une matiere
      * 
      */
     public void supprimerMatiere(String a){
-        if(this.containsKey(a)){
-            this.remove(a);
+        if(matiere.containsKey(a)){
+            matiere.remove(a);
         }
     }
 
+<<<<<<< HEAD
 
 
 
@@ -74,15 +80,17 @@ public class Formation{
 
 
     
+=======
+>>>>>>> 4c674e9495e77b679af5cce97165cea148daeb66
     /**
      * @param a le nom de la matiere
      * @return int le noef de la matiere
-     * on accède la valeur ( coefficient) de la matiere donne en parametre
+     * on accède la valeur (coefficient) de la matiere donne en parametre
      */
     public int coefMatiere(String a){
-        int coef = null;
-        coef = this.get(a);
-        if(!this.containsKey(a)){
+        int coef = 0;
+        coef = matiere.get(a);
+        if(!matiere.containsKey(a)){
             return -1;
         }
         return coef;
