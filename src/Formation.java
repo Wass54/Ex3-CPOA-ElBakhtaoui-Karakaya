@@ -63,25 +63,7 @@ public class Formation{
             matiere.remove(a);
         }
     }
-
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
-=======
->>>>>>> 4c674e9495e77b679af5cce97165cea148daeb66
     /**
      * @param a le nom de la matiere
      * @return int le noef de la matiere

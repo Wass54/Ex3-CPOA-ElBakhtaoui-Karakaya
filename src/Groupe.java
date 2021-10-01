@@ -76,8 +76,12 @@ public class Groupe{
      * leur moyenne générale décroissante
      */
     public void triParMerite(){
-        float note = etudiants.getNotes();
-        Collections.sort(note, Collections.reverseOrder()); //trier dans l'ordre décroissant
+        Collections.sort(etudiants, new Comparator<Etudiant>() {
+            @Override
+            public int compare(Etudiant o1, Etudiant o2) {
+                return o1.calculMoyenneG() > o2.calculMoyenneG() ? 1 : -1;
+            }
+        });
     }
 
     /**
@@ -85,7 +89,7 @@ public class Groupe{
      * ordre alphabétique
      */
     public void triAlpha(){
-        Collections.sort(etudiants);
+        List.sort(etudiants);
     }
 
     /**
