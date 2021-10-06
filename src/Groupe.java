@@ -27,22 +27,27 @@ public class Groupe{
      * méthode qui permet d'ajouter un étudiant du groupe
      * @param Etudiant étudiant qui va être ajouté dans la liste etudiants
      */
-    public void ajouterEtudiant(Etudiant pEtu){
+    public void ajouterEtudiant(Etudiant pEtu) throws EtudiantException, FormationNonCompatibleException{
         if(this.getFormation() == pEtu.getFormation()){
             if(!etudiants.contains(pEtu)){
                 etudiants.add(pEtu);     
+                System.out.println("Etudiant ajoute");
             }
+            else{throw new EtudiantException("L'etudiant n'existe pas");}
         }
+        else{throw new FormationNonCompatibleException("La formation n'est pas compatible");}
     }
 
     /**
      * méthode qui permet de supprimer un étudiant du groupe
      * @param Etudiant étudiant qui va être supprimé
      */
-    public void supprimerEtudiant(Etudiant pEtu){
+    public void supprimerEtudiant(Etudiant pEtu) throws EtudiantException{
         if(etudiants.contains(pEtu)){
         etudiants.remove(pEtu);
+        System.out.println("Etudiant supprime");
         }
+        else{throw new EtudiantException("L'etudiant n'existe pas");}
     }
 
     /**
@@ -50,12 +55,17 @@ public class Groupe{
      * @param String la chaine de caractère correspond à la matière dont on veut savoir la moyenne
      * @return une valeur de type float qui correspond à la moyenne
      */
-    public float calculMoyenne(String pMatiere){
+    public float calculMoyenne(String pMatiere) throws MatiereException{
         float res = 0;
-        for (int i = 0; i < etudiants.size(); i++) {
-            res += etudiants.calculMoyenne(pMatiere).get(i);
+        Map<String,Integer> m = formation.getMatiere();
+
+        if(m.containsKey(pMatiere)){
+            for (int i = 0; i < etudiants.size(); i++) {
+                res += etudiants.calculMoyenne(pMatiere).get(i);
+            }
+            return res / etudiants.size();
         }
-        return res / etudiants.size();
+        else{throw new MatiereException("La matiere n'est pas dans la formation");}
          
     }
 
@@ -89,7 +99,7 @@ public class Groupe{
      * ordre alphabétique
      */
     public void triAlpha(){
-        List.sort(etudiants);
+        Collections.sort(etudiants);
     }
 
     /**

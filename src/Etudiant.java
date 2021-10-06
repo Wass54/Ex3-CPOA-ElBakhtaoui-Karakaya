@@ -98,6 +98,7 @@ public class Etudiant{
 
     /**
      * Getteur qui permet de récuperer les notes de l'étudiant
+     * le string correspond à la matière et l'array list de float correspond aux notes
      * @return les notes de l'étudiant 
      */
     public Map<String, ArrayList<Float>> getNotes(){

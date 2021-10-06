@@ -7,7 +7,7 @@ import org.junit.Test;
 public class FormationTest {
 
     Etudiant etu1;
-    Formation Medecine, info, Mecanique;
+    Formation info;
     Map<String, Integer> mapMatiere;
 
     @Before    
