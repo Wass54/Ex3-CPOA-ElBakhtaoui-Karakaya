@@ -47,7 +47,7 @@ public class Formation{
      * 
      */
     public void ajouterMatiere(String a, int b){
-        if(matiere.containsKey(a)){
+        if(!matiere.containsKey(a)){
         matiere.put(a, b);
         }
     }
@@ -58,10 +58,11 @@ public class Formation{
      * On supprime une matiere
      * 
      */
-    public void supprimerMatiere(String a){
+    public void supprimerMatiere(String a) throws MatiereException{
         if(matiere.containsKey(a)){
             matiere.remove(a);
         }
+        else{throw new MatiereException("La matiere n'existe pas");}
     }
     
     /**
