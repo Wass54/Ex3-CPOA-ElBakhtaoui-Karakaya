@@ -3,48 +3,62 @@ public class EtudiantTest {
     Etudiant e;
 
     @Before
-    public void before(){
+    public void Initialisation(){
         e = new Etudiant(new Identite("123", "Martin", "Jean"), new Formation());
+
+        String matiere = "Sport";
+        Float noteNormal = 10;
+        Float noteNegative = -10;
+        Float noteSuperieur = 50;
+
+        mapMatiere = new HashMap<String, Integer>();
+        mapMatiere.put("Mathematique", 3);
+        mapMatiere.put("Expression Communication", 2);
+        mapMatiere.put("Python", 5);
+        info = new Formation("S3C", mapMatiere);
+        etu1 = new Etudiant(new Identite("AA", "El Bakhtaoui","Wassim"), info);    
     }
+
+
 
     @Test
     public void test_ajouterNote_normal(){
-        // Préparations des données
-        String matiere = "Sport";
-        Float note = 10;
 
         // Execution
-        e.ajouterNote(matiere, note);
+        e.ajouterNote(matiere, noteNormal);
 
         // Verification
-        assertTrue("La note n'a pas ete ajoutee", e.getNotes().get(matiere).get(0) == note);
+        assertTrue("La note a ete ajoutee", e.getNotes().get(matiere).get(0) == noteNormal);
 
     }
 
-    @Test
-    public void test_ajouterNote_negatives(){
-        // Préparations des données
-        String matiere = "Sport";
-        Float note = -10;
-
+    @Test(expected = NoteException.class)
+    public void test_ajouterNote_negatives() throws NoteException{
+        e.ajouterNote("Anglais", -6);
         // Execution
-        e.ajouterNote(matiere, note);
+        //e.ajouterNote(matiere, noteNegative);
 
         // Verification
-        assertTrue("La note n'a pas ete ajoutee", e.getNotes().size() == 0);
+        //assertTrue("La note n'a pas ete ajoutee car elle est negative", e.getNotes() <= 0);
     }
 
-    @Test
-    public void test_ajouterNote_superieures(){
-        // Préparations des données
-        String matiere = "Sport";
-        Float note = 50;
-
+    @Test(expected = NoteException.class)
+    public void test_ajouterNote_superieures() throws NoteException{
+        e.ajouterNote("Anglais", 110);
         // Execution
-        e.ajouterNote(matiere, note);
+        //e.ajouterNote(matiere, noteSuperieur);
 
         // Verification
-        assertTrue("La note n'a pas ete ajoutee valeur trop grande", e.getNotes().size() == 0);
+        //assertTrue("La note n'a pas ete ajoutee car la valeur est; trop grande (max : 20)", e.getNotes().get(matiere) >= 20);
+    }
+
+
+
+    @Test(expected = NoteException.class)
+    public void test_ajouterNoteSansMatiere() throws NoteException{
+        e.ajouterNote(null, 14);
+       //assertTrue("La note n'a pas ete ajoutee car il n'y a pas de matiere", e.getNotes() >= 20);
+
     }
 
     @Test
@@ -56,11 +70,23 @@ public class EtudiantTest {
         e.ajouterNote("Sport", 15);
 
         // Execution
-        float moyenne = e.calculMoyenneMatiere("Sport");
+        float moyenne = e.calculMoyenne("Sport");
 
         // Verification
         assertTrue("La moyenne devrait valoir 9,5.", 9.5 == moyenne);
     }
+
+
+    @Test(expected = NoteException.class)
+    public void test_calculerMoyenneMatiereSansNote() throws NoteException{
+        e.ajouterNote("Italien", null);
+        e.calculMoyenne("Italien");
+       //assertTrue("La note n'a pas ete ajoutee car il n'y a pas de matiere", e.getNotes() >= 20);
+
+    }
+
+
+
 
     @Test
     public void test_calculerMoyenneGenerale(){
@@ -71,9 +97,22 @@ public class EtudiantTest {
         e.ajouterNote("Physique", 13);
 
         // Execution
-        float moyenne = e.calculMoyenneGeneral();
+        float moyenne = e.calculMoyenneG();
 
         // Verification
         assertTrue("La moyenne devrait valoir 12,75.", 12.75 == moyenne);
     }
+    @Test(expected = NoteException.class)
+    public void test_calculerMoyenneGeneraleSansNote() throws NoteException{
+        // Préparation des données
+        e.ajouterNote("Sport", 15);
+        e.ajouterNote("Francais", 9);
+        e.ajouterNote("Maths", null);
+        e.ajouterNote("Physique", 13);
+        
+        e.calculMoyenneG();
+       //assertTrue("La note n'a pas ete ajoutee car il n'y a pas de matiere", e.getNotes() >= 20);
+
+    }
+
 }
