@@ -1,4 +1,5 @@
 import java.util.*;
+
 /**
  * classe qui correspond à un groupe
  */
@@ -55,13 +56,13 @@ public class Groupe{
      * @param String la chaine de caractère correspond à la matière dont on veut savoir la moyenne
      * @return une valeur de type float qui correspond à la moyenne
      */
-    public float calculMoyenne(String pMatiere) throws MatiereException{
+    public float calculMoyenneGroupe(String pMatiere) throws MatiereException{
         float res = 0;
         Map<String,Integer> m = formation.getMatiere();
 
         if(m.containsKey(pMatiere)){
             for (int i = 0; i < etudiants.size(); i++) {
-                res += etudiants.calculMoyenne(pMatiere).get(i);
+                res += etudiants.get(i).calculMoyenne(pMatiere);
             }
             return res / etudiants.size();
         }
@@ -74,9 +75,9 @@ public class Groupe{
      * @return une valeur de type float qui correspond à la moyenne générale du groupe
      */
     public float calculMoyenneG(){
-        float res = O;
+        float res = 0;
         for(String matiere : etudiants.getNotes().keySet()){
-            res += this.calculMoyenne(matiere);
+            res += this.calculMoyenneGroupe(matiere);
         }
         return res / etudiants.getNotes().keySet().size();
     }
