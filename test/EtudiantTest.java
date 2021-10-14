@@ -1,3 +1,9 @@
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import java.util.*;
+
 public class EtudiantTest {
 
     Etudiant e;
@@ -10,7 +16,10 @@ public class EtudiantTest {
         Float noteNormal = 10;
         Float noteNegative = -10;
         Float noteSuperieur = 50;
-
+        HashMap<String, Integer> mapMatiere;
+        Formation info;
+        Etudiant etu1;
+        
         mapMatiere = new HashMap<String, Integer>();
         mapMatiere.put("Mathematique", 3);
         mapMatiere.put("Expression Communication", 2);
@@ -33,7 +42,7 @@ public class EtudiantTest {
     }
 
     @Test(expected = NoteException.class)
-    public void test_ajouterNote_negatives() throws NoteException{
+    public void test_ajouterNote_negatives() throws NoteException, MatiereException{
         e.ajouterNote("Anglais", -6);
         // Execution
         //e.ajouterNote(matiere, noteNegative);
@@ -43,7 +52,7 @@ public class EtudiantTest {
     }
 
     @Test(expected = NoteException.class)
-    public void test_ajouterNote_superieures() throws NoteException{
+    public void test_ajouterNote_superieures() throws NoteException, MatiereException{
         e.ajouterNote("Anglais", 110);
         // Execution
         //e.ajouterNote(matiere, noteSuperieur);

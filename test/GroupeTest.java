@@ -145,6 +145,12 @@ public class GroupeTest {
         assertEquals("Le groupe d'etudiant doit avoir une moyenne generale de 20", 20, gr.calculMoyenneG(),0.01);
     }
 
+    @Test
+    public void triMerite_normal(){
+        triParMerite(info, etuds);
+        assertEquals("L'ordre de la liste n'est pas en alphabétique", )
+    }
+
     
     
 
